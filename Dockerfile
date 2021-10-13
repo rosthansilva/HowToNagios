@@ -176,7 +176,7 @@ RUN sed -i 's,/bin/mail,/usr/bin/mail,' ${NAGIOS_HOME}/etc/objects/commands.cfg 
 RUN echo "use_timezone=${NAGIOS_TIMEZONE}" >> ${NAGIOS_HOME}/etc/nagios.cfg && \
     sed -i 's/date_format=us/date_format=iso8601/g' ${NAGIOS_HOME}/etc/nagios.cfg
 
-y
+
 RUN mkdir -p /orig/apache2                     && \
     cp -r /etc/apache2/*  /orig/apache2        && \
     cp -r ${NAGIOS_HOME}/etc  /orig/etc        && \
