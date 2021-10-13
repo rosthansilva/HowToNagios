@@ -9,7 +9,7 @@ ENV NAGIOS_HOME=/opt/nagios \
     NAGIOS_CMDUSER=nagios \
     NAGIOS_CMDGROUP=nagios \
     NAGIOS_TIMEZONE=UTC \
-    NAGIOS_FQDN=nagios.example.com \
+    NAGIOS_FQDN=nagios.local \
     NAGIOSADMIN_USER=nagiosadmin \
     NAGIOSADMIN_PASS=nagios \
     NAGIOS_VERSION=4.4.6 \
@@ -20,6 +20,7 @@ ENV NAGIOS_HOME=/opt/nagios \
 
 
     RUN addgroup -S ${NAGIOS_GROUP} && \
+        echo "${NAGIOS_FQDN} 127.0.0.1" > /etc/hosts \
         adduser  -S ${NAGIOS_USER} -G ${NAGIOS_CMDGROUP} && \
         apk update && \
         apk add --no-cache git curl unzip apache2 apache2-utils rsyslog \
