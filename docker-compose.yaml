@@ -1,0 +1,8 @@
+version : "3.9"
+service:
+  app:
+    buil: .
+    ports:
+      8080:80
+volume:
+  - ./nagios.data:/opt/nagios/
