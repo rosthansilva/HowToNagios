@@ -18,9 +18,8 @@ ENV NAGIOS_HOME=/opt/nagios \
     APACHE_LOCK_DIR=/var/run \
     APACHE_LOG_DIR=/var/log/apache2
 
-
+    RUN echo "${NAGIOS_FQDN} 127.0.0.1" > /etc/hosts \
     RUN addgroup -S ${NAGIOS_GROUP} && \
-        echo "${NAGIOS_FQDN} 127.0.0.1" > /etc/hosts \
         adduser  -S ${NAGIOS_USER} -G ${NAGIOS_CMDGROUP} && \
         apk update && \
         apk add --no-cache git curl unzip apache2 apache2-utils rsyslog \
