@@ -52,12 +52,7 @@ RUN apk update && \
                         mariadb-connector-c-dev perl \
                         net-snmp-dev openldap-dev openssl-dev postgresql-dev
 
-: '# For x64 the binary is : gosu-amd64' && \
-: '# For arm-v6 the binary is : gosu-armel' && \
-: '# For arm-v7 the binary is : gosu-armhf' && \
-: '# For arm64 the binary is : gosu-arm64' && \
-: '#######################################' && \
-: '# Creating an associative array with the platforms and their respective gosu release DOES NOT WORK in /bin/sh' && \
+
 echo "Arguments TARGETPLATFORM: ${TARGETPLATFORM} and BUILDPLATFORM: ${BUILDPLATFORM}" && \
 echo "$TARGETPLATFORM" | awk '{ gosuBinArr["linux/amd64"]="gosu-amd64"; gosuBinArr["linux/arm/v6"]="gosu-armel"; gosuBinArr["linux/arm/v7"]="gosu-armhf"; gosuBinArr["linux/arm64"]="gosu-arm64"; print gosuBinArr[$0];}' > mygosuver.txt && \
 gosuPlatform=$(cat mygosuver.txt) && \
