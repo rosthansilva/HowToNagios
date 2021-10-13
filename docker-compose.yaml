@@ -8,3 +8,6 @@ services:
     volumes:
       - nagios_data:/opt/nagios
       - apache_log:/var/log/apache2
+volumes:
+  - nagios_data : {}
+  - apache_data : {}
