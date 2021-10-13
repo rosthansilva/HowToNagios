@@ -1,6 +1,7 @@
 version : "3.9"
 service:
-  app:
+  nagios:
+    container_name: HowToNagios:v1
     buil: .
     ports:
       8080:80
