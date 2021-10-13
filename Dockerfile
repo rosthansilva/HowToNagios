@@ -53,7 +53,7 @@ RUN apk update && \
                         net-snmp-dev openldap-dev openssl-dev postgresql-dev
 
 
-echo "Arguments TARGETPLATFORM: ${TARGETPLATFORM} and BUILDPLATFORM: ${BUILDPLATFORM}" && \
+RUN echo "Arguments TARGETPLATFORM: ${TARGETPLATFORM} and BUILDPLATFORM: ${BUILDPLATFORM}" && \
 echo "$TARGETPLATFORM" | awk '{ gosuBinArr["linux/amd64"]="gosu-amd64"; gosuBinArr["linux/arm/v6"]="gosu-armel"; gosuBinArr["linux/arm/v7"]="gosu-armhf"; gosuBinArr["linux/arm64"]="gosu-arm64"; print gosuBinArr[$0];}' > mygosuver.txt && \
 gosuPlatform=$(cat mygosuver.txt) && \
 echo "Downloading ${gosuPlatform} for platform $TARGETPLATFORM" &&\
