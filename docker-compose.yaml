@@ -1,9 +1,7 @@
-version : "3.3"
-service:
-  nagios:
-    container_name: HowToNagios:v1
-    buil: .
+version : "2.2"
+services:
+  howtonagios:
+    container_name: howtonagios
+    build: .
     ports:
-      8080:80
-volume:
-  - ./nagios.data:/opt/nagios/
+      - 8080:80

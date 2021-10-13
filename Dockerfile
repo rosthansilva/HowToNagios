@@ -1,4 +1,3 @@
-
 FROM alpine:3.14 as builder-base
 
 ARG TARGETPLATFORM
@@ -237,9 +236,9 @@ RUN chmod +x /usr/local/bin/nagios.sh                 \
             dos2unix /etc/sv/**/run                   && \
             dos2unix /etc/ssmtp/ssmtp.conf
 
-
+COPY bin/nagios.sh .
 EXPOSE 80
 
 VOLUME "${NAGIOS_HOME}/var" "${NAGIOS_HOME}/etc" "/var/log/apache2" "/opt/Custom-Nagios-Plugins"
 
-CMD [ "bin/nagios.sh" ]
+CMD [ "nagios.sh" ]
